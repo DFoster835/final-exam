@@ -2,6 +2,12 @@ const mongoose = require('mongoose')
 
 const gameSchema = new mongoose.Schema({
 	// TODO: complete schema
+winner: String,
+moves: {
+	player: Number,
+	computer: Number
+},
+playedAt: Date
 })
 
 gameSchema.set('toJSON', {
