@@ -40,19 +40,42 @@ describe('GET /api/games', () => {
 		await api
 			.get('/api/games')
 			.expect(200)
-			.expect(res => {
-				// TODO: assert that API returned expected number of games
-			})
+				//TODO: assert that API returned expected number of games
+			const response = await api.get('/api/games')
+			expect(response.body).toHaveLength(games.length)
+		
 	})
 })
 
 
 describe('POST /api/games', () => {
+	const newGame = {
+		winner: "player",
+		playerMove: 0,
+		computerMove: 1
+	}; 
+	
 	test('create a new game', async () => {
 		// TODO: assert that API return new game object
+		await api.post('/api/games')
+			.send(newGame)
+			.expect(201)
+			.expect('Content-Type', /application\/json/)
+			.expect(res => {
+				const {winner, moves} = res.body
+				console.log("Winner is", res.body)
+				expect({winner, moves}).toEqual({
+					winner: newGame.winner,
+					moves: {
+						player: newGame.playerMove,
+						computer: newGame.computerMove
+					}
+				
+		});
 	})
 })
 
-afterAll(() => {
+afterAll((done) => {
 	mongoose.connection.close()
+	done();
 })
