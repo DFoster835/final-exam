@@ -6,8 +6,8 @@
   "type": "module",
   "scripts": {
     "start": "nodemon index.js",
-    "test": "jest --verbose --runInBand",
-    "tdd": "jest --verbose --watchAll"
+    "test": "cross-env NODE_ENV = test jest --verbose --runInBand --detectOpenHandles --forceExit",
+    "tdd": "cross-env NODE_ENV = test jest --verbose --watchAll"
   },
   "keywords": [],
   "author": "",
