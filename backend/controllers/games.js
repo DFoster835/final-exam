@@ -9,14 +9,14 @@ gamesRouter.get('/', async (request, response) => {
 })
 
 gamesRouter.post('/', async (request, response) => {
-  const blog = new Game(request.body)
+  const game = new Game(request.body)
 	// TODO: implement input validation
   if (game === undefined)
-  blog
+  game
     .save()
     .then(result => {
 	  console.log('success');
-      response.status(201).json(result)
+      response.status(200).json(result)
     })
 })
 
@@ -28,6 +28,11 @@ gamesRouter.get('/games/:id, async(req, res) => {
 })
 
 // TODO: implement DELETE /:id to remove a game
+gamesRouter.post('/games/delete/:id, async(req, res)  => {
+		 Game.findByIdAndDelete(req.params.id).then(result => {
+	response.json(result);
+	})
+})
 
 module.exports = gamesRouter
 
