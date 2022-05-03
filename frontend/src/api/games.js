@@ -1,10 +1,11 @@
 import axios from 'axios'
 
-const baseUrl = "https://localhost:3009/api/games"
+const url = "https://localhost:8000/api"
+const API = axios.create({
+    baseUrl: url
+})
 
-const funcs = {
-  getAll: async() => axios.get(baseUrl),
-  create: async(game) => axios.post(baseUrl, game)
-}
-
-inport default funcs
+export const getAllGames = () => API.get('/games');
+export const getGameID = (id) => API.get('/games'/${id}`,)
+export const postGame = (data) => API.post('/games',data)
+export const deleteGame = (id) => API.delete('/games'/${id}`,)
