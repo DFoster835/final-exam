@@ -1,1 +1,32 @@
+.button {
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    background-color: white;
+    color: black;
+    border: 2px solid #34b9ae;
+}
 
+.button:hover {
+    background-color: #6fcc31;
+    color: white;
+}
+
+.buttonDiv {
+    margin-left: 25%;
+}
+
+.mainDiv {
+    margin-left: 25%;
+}
+
+.selectDiv {
+    margin-left: 10%;
+}
