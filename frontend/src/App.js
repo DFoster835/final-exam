@@ -1,9 +1,26 @@
-function gameResults() {
- return<></> 
+function gameResults(props) {
+ const games = props.games
+ if(games && games.length > 0) {
+  
+  
+ return (<>
+  <ul>
+   {games.map(function(game) {
+    return (<li>
+          <span>winner: {game,winner} </span>
+          <span>player played: {movesDict[game,moves,player]} </span>
+          <span>computer played: {movesDict[game,moves,computer]} </span>
+         </li>)
+      })}
+     </ul>
+  </>)
+ }
+  
 }
 
 const gameData = [
   {
+    "id": 1,
     "winner": "player",
     "moves": {
       "player": 0,
