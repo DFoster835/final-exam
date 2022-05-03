@@ -23,7 +23,13 @@ const play = ({player, computer}) => {
 	}
 }
 
+const isWinnerValid = (winner) => {
+	return typeof winner === 'string' && ["player win", "computer win", "draw"].includes(winner);
+	
+}
 
 module.exports = {
-	play
+	play,
+	isValidMove,
+	isWinnerInputValid
 }
