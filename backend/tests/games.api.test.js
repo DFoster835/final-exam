@@ -24,7 +24,7 @@ const games = [
 
 const testPlayedAtValue = new Date(+1619743623)
 
-beforeAll(async () => {
+beforeAll(async (done) => {
 	// clear out any existing data
 	await Game.deleteMany({})
 	// save initial data
@@ -33,6 +33,7 @@ beforeAll(async () => {
 	})
 	// block until saves are complete
 	await Promise.all(saves)
+	done()
 })
 
 describe('GET /api/games', () => {
@@ -60,8 +61,8 @@ describe('POST /api/games', () => {
 		await api.post('/api/games')
 			.send(newGame)
 			.expect(201)
-			.expect('Content-Type', /application\/json/)
-			.expect(res => {
+			.expect('Content-Type', /application/json/)
+			.then(async (res) => {
 				const {winner, moves} = res.body
 				console.log("Winner is", res.body)
 				expect({winner, moves}).toEqual({
@@ -70,12 +71,11 @@ describe('POST /api/games', () => {
 						player: newGame.playerMove,
 						computer: newGame.computerMove
 					}
-				
-		});
+				});		
+		})
 	})
 })
 
 afterAll((done) => {
-	mongoose.connection.close()
-	done();
+	mongoose.connection.close(done)
 })
