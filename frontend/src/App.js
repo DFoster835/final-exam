@@ -1,3 +1,18 @@
+function gameResults() {
+ return<></> 
+}
+
+const gameData = [
+  {
+    "winner": "player",
+    "moves": {
+      "player": 0,
+      "computer": 2
+    },
+    "playedAt": "Thu, 29 Apr 2021 22:50:27 GMT"
+  }
+]
+
 function App() {
   return (
     <div className="App">
